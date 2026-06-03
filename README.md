@@ -8,6 +8,7 @@
 ![Status](https://img.shields.io/badge/Status-Completed-2EA44F)
 
 ---
+![Intro](assets/intro.png)
 
 ## 📌 Project Overview
 
@@ -80,8 +81,7 @@ The business needed answers to the following questions:
 
 ## ⚙️ Project Pipeline
 
-
-![workflow](assets\workflow_diagram.png)
+![workflow](assets/workflow_diagram.png)
 
 
 The initial exploration revealed:
@@ -213,10 +213,7 @@ FROM customer_data
 GROUP BY gender;
 ```
 
-| gender | revenue |
-|---|---|
-| Male | 157,890 |
-| Female | 75,191 |
+![Q1](sql/sql_outputs/Q1.PNG)
 
 > Male customers generate **2.1× more revenue** than female customers, directly reflecting the 68/32 gender split in the customer base.
 
@@ -232,7 +229,6 @@ FROM customer_data
 WHERE discount_applied = 'Yes'
     AND purchase_amount > (SELECT AVG(purchase_amount) FROM customer_data);
 ```
-
 > **839 customers** applied a discount yet still spent above the $59.76 average — high-value, deal-motivated buyers worth targeting with premium loyalty offers.
 
 ---
@@ -247,7 +243,7 @@ FROM customer_data
 GROUP BY item_purchased
 ORDER BY AVG(review_rating) DESC;
 ```
-![Q3](sql\sql_outputs\Q3.PNG)
+![Q3](sql/sql_outputs/Q3.PNG)
 
 
 ### Q4. Compare average purchase amounts between Standard and Express shipping
@@ -261,7 +257,7 @@ WHERE shipping_type IN ('Standard', 'Express')
 GROUP BY shipping_type;
 ```
 
-![Q4](sql\sql_outputs\Q4.PNG)
+![Q4](sql/sql_outputs/Q4.PNG)
 
 > Express shipping customers spend **$2 more on average** — a signal of higher purchase intent worth targeting with premium offerings.
 
@@ -278,7 +274,7 @@ SELECT
 FROM customer_data
 GROUP BY subscription_status;
 ```
-![Q5](sql\sql_outputs\Q5.PNG)
+![Q5](sql/sql_outputs/Q5.PNG)
 
 > Both groups spend virtually the same per transaction. However non-subscribers account for **73% of total revenue** — a major retention and conversion risk.
 
@@ -296,7 +292,7 @@ FROM customer_data
 GROUP BY item_purchased
 ORDER BY discount_rate DESC;
 ```
-![Q6](sql\sql_outputs\Q6.PNG)
+![Q6](sql/sql_outputs/Q6.PNG)
 
 > These products rely on discounts for nearly **half of all purchases** — signalling weak standalone perceived value or poor price positioning.
 
@@ -324,7 +320,7 @@ FROM segment_data
 GROUP BY customer_segment;
 ```
 
-![Q7](sql\sql_outputs\Q7.PNG)
+![Q7](sql/sql_outputs/Q7.PNG)
 
 > **80% of the customer base is already Loyal** — an exceptional retention foundation. The priority is converting the 701 Returning customers upward.
 
@@ -353,7 +349,7 @@ SELECT
 FROM item_count
 WHERE item_rank <= 3;
 ```
-![Q8](sql\sql_outputs\Q8.PNG)
+![Q8](sql/sql_outputs/Q8.PNG)
 ---
 
 ### Q9. Are repeat buyers (>5 purchases) more likely to subscribe?
@@ -366,7 +362,7 @@ FROM customer_data
 WHERE previous_purchases > 5
 GROUP BY subscription_status;
 ```
-![Q9](sql\sql_outputs\Q9.PNG)
+![Q9](sql/sql_outputs/Q9.PNG)
 
 > Even among repeat buyers, **72% remain unsubscribed** — the issue is not engagement, it is the lack of compelling subscription value.
 
@@ -382,7 +378,7 @@ FROM customer_data
 GROUP BY age_group
 ORDER BY revenue_contribution DESC;
 ```
-![Q10](sql\sql_outputs\Q10.PNG)
+![Q10](sql/sql_outputs/Q10.PNG)
 
 > Revenue is **spread remarkably evenly** across all age groups — no single demographic dominates, meaning broad multi-segment marketing is more effective than hyper-targeting.
 
@@ -418,7 +414,7 @@ AVERAGEX(
 
 ### Page 1 — Overview
 
-![Dashboard Page 1](powerbi\dashboard_screenshot_p1.png)
+![Dashboard Page 1](powerbi/dashboard_screenshot_p1.png)
 
 **Visuals:** KPI cards (Total Customers · Avg Purchase Amount · Avg Review Rating · Subscription Rate with ⚠ 73% churn risk alert) · Subscription Status donut chart · Revenue by Category · Revenue by Age Group · Sales by Age Group
 
@@ -426,7 +422,7 @@ AVERAGEX(
 
 ### Page 2 — Customer & Sales Insights
 
-![Dashboard Page 2](powerbi\dashboard_screenshot_p2.png)
+![Dashboard Page 2](powerbi/dashboard_screenshot_p2.png)
 
 **Visuals:** KPI cards (Total Revenue · Top Season · Avg CLV · Female Subscriber % with 0% alert) · Payment Method count table · Revenue by Season · Shipping Type usage · Category Revenue by Gender · Sales by Age Group (purchase frequency)
 
